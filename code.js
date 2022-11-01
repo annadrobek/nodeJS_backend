@@ -1,5 +1,5 @@
-const http = require("http");
-const port = 5000;
+const http = require("http"); //deklaracja stałej
+const port = 5000; //korzystam z portu 5000
 const server = http.createServer(async (req, res) => {
     if (req.url === "/getServerDate" && req.method === "GET") {
 	let date_ob = new Date();
