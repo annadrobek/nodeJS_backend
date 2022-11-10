@@ -2,7 +2,8 @@ const http = require("http");
 const port = 5000;
 const server = http.createServer(async (req, res) => {
     if (req.url === "/getServerDate" && req.method === "GET") {
-	let date_ob = new Date();
+        let date_ob = new Date();
+        var miliseconds = date_ob.getMilliseconds()
         var seconds = date_ob.getSeconds();
         if (seconds <= 9) {
            seconds = '0'+seconds;
@@ -25,7 +26,7 @@ const server = http.createServer(async (req, res) => {
            day = '0'+day;
         }
         res.writeHead(200, { "Content-Type": "application/json" });
-        res.end(day+'.'+month+'.'+year+' '+hour+':'+minutes+":"+seconds);
+        res.end(day+'.'+month+'.'+year+' '+hour+':'+minutes+":"+seconds+":"+miliseconds);
     }
     else {
         res.writeHead(404, { "Content-Type": "application/json" });
